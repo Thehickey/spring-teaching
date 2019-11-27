@@ -19,6 +19,7 @@ public class Employee {
         this.username = username;
         this.deptId = deptId;
         this.id = id;
+
     }
 
     public Employee(BigDecimal salary,Integer gender, String username, Integer deptId) {
