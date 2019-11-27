@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dao.EmployeeDao">
+
+    <select id="getAll" resultType="emp">
+        select id,salary,gender,username,deptId
+        from employee
+    </select>
+
+    <select id="getEmps" resultType="emp">
+        select id,salary,gender,username,deptId
+        from employee
+        <trim prefix="where" prefixOverrides="and | or">
+            <if test="salary != null">
+                and salary > #{salary}
+            </if>
+            <if test="username != null">
+                and username like #{username}"%"
+            </if>
+        </trim>
+    </select>
+
+    <update id="updateBatch">
+        <foreach collection="list" item="emp" separator=";">
+            update employee
+            set salary = #{emp.salary},
+            gender = #{emp.gender},
+            username = #{emp.username},
+            deptId = #{emp.deptId}
+            where id = #{emp.id}
+        </foreach>
+    </update>
+
+    <update id="update">
+        update employee
+            set salary = #{salary},
+            gender = #{gender},
+            username = #{username},
+            deptId = #{deptId}
+            where id = #{id}
+    </update>
+
+</mapper>
