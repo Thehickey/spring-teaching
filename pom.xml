@@ -29,7 +29,7 @@
         <dbutils.version>1.7</dbutils.version>
         <jstl.version>1.2</jstl.version>
         <servlet.version>3.1.0</servlet.version>
-        <mybatis.version>3.5.2</mybatis.version>
+        <mybatis.version>3.5.6</mybatis.version>
     </properties>
 
     <dependencyManagement>
